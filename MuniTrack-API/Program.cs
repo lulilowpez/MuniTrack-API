@@ -1,4 +1,8 @@
+using Application.Interfaces;
+using Application.Services;
+using Domain.Interfaces;
 using Infrastructure;
+using Infrastructure.Repository;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -14,6 +18,10 @@ builder.Services.AddSwaggerGen();
 
 builder.Services.AddDbContext<MuniDbContext>(dbContextOptions => dbContextOptions.UseSqlite(
     builder.Configuration["ConnectionStrings:MuniAPIDBConnectionString"]));
+
+
+builder.Services.AddSingleton<IOperatorRepository, OperatorRepository>();
+builder.Services.AddSingleton<IOperatorService, OperatorService>();
 
 var app = builder.Build();
 
