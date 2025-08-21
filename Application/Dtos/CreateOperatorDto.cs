@@ -8,9 +8,9 @@ using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 using Domain.Enum;
 
-namespace Domain.Entities
+namespace Application.Dtos
 {
-    public class Operator
+    public class CreateOperatorDto
     {
         [Key]
         public int DNI { get; set; }
@@ -30,6 +30,5 @@ namespace Domain.Entities
         [Required]
         [JsonConverter(typeof(JsonStringEnumConverter))]
         public operatorType Position { get; set; }
-
     }
 }

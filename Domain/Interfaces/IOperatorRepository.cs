@@ -9,5 +9,7 @@ namespace Domain.Interfaces
 {
     public interface IOperatorRepository: IBaseRepository<Operator>
     {
+        void AddOperator(Operator Operator);
+        List<Operator> GetOperators();
     }
 }

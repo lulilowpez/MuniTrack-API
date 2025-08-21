@@ -19,9 +19,10 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<MuniDbContext>(dbContextOptions => dbContextOptions.UseSqlite(
     builder.Configuration["ConnectionStrings:MuniAPIDBConnectionString"]));
 
-
-builder.Services.AddSingleton<IOperatorRepository, OperatorRepository>();
-builder.Services.AddSingleton<IOperatorService, OperatorService>();
+#region
+builder.Services.AddScoped<IOperatorRepository, OperatorRepository>();
+builder.Services.AddScoped<IOperatorService, OperatorService>();
+#endregion
 
 var app = builder.Build();
 
