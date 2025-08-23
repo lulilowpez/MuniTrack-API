@@ -27,5 +27,22 @@ namespace Infrastructure.Repository
         {
             return _muniDbContext.Operators.ToList();
         }
+
+        public Operator? GetOperatorByDni(int dni)
+        {
+            return _muniDbContext.Operators.FirstOrDefault(g => g.DNI == dni);
+        }
+
+        public Operator UpdateOperator(Operator Operator)
+        {
+            _muniDbContext.Update(Operator);
+            _muniDbContext.SaveChanges();
+            return Operator;
+        }
+        public void DeleteOperator(Operator Operator)
+        {
+            _muniDbContext.Remove(Operator);
+            _muniDbContext.SaveChanges();
+        }
     }
 }

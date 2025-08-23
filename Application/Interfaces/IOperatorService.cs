@@ -12,5 +12,9 @@ namespace Application.Interfaces
     {
         List<Operator> GetOperators();
         void CreateOperator(CreateOperatorDto Dto);
+        bool DeleteOperator(int dni);
+        Operator? GetOperatorByDni(int dni);
+        Operator UpdateOperator(int dni, UpdateOperatorDto Dto);
+
     }
 }

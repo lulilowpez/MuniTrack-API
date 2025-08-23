@@ -8,7 +8,7 @@ namespace Domain.Enum
 {
     public enum operatorType
     {
-        OperatorBasic,
-        OperatorElite
+        operatorBasic,
+        operatorElite
     }
 }

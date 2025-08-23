@@ -25,6 +25,10 @@ namespace Application.Services
         }
         public void CreateOperator(CreateOperatorDto Dto)
         {
+            var existingOperator = _operatorRepository.GetOperatorByDni(Dto.DNI);
+            if (existingOperator != null)
+                throw new Exception($"Ya existe un operador con DNI {Dto.DNI}");
+
             Operator newOperator = new Operator()
             {
                 DNI = Dto.DNI,
@@ -37,6 +41,41 @@ namespace Application.Services
                 Position = Dto.Position
             };
             _operatorRepository.AddOperator(newOperator);
+        }
+
+        public bool DeleteOperator(int dni)
+        {
+            var operatorDelete = _operatorRepository.GetOperatorByDni(dni);
+            if (operatorDelete is null)
+                return false;
+
+            operatorDelete.Deleted = 1;
+            _operatorRepository.UpdateOperator(operatorDelete);
+            return true;
+        }
+
+        public Operator? GetOperatorByDni(int dni)
+        {
+            return _operatorRepository.GetOperatorByDni(dni);
+        }
+
+        public Operator UpdateOperator(int dni, UpdateOperatorDto Dto)
+        {
+            var operatorEntity = _operatorRepository.GetOperatorByDni(dni);
+            if (operatorEntity is null)
+                throw new Exception("Operator no encontrado");
+
+            operatorEntity.Name = Dto.Name;
+            operatorEntity.LastName = Dto.LastName;
+            operatorEntity.NLegajo = Dto.NLegajo;
+            operatorEntity.Password = Dto.Password;
+            operatorEntity.Phone = Dto.Phone;
+            operatorEntity.Email = Dto.Email;
+            operatorEntity.Position = Dto.Position;
+
+            _operatorRepository.UpdateOperator(operatorEntity);
+            return operatorEntity;
+               
         }
     }
 }
