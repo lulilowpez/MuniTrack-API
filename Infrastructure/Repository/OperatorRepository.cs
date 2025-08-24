@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Domain.Entities;
 using Domain.Interfaces;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 
 namespace Infrastructure.Repository
@@ -43,6 +44,10 @@ namespace Infrastructure.Repository
         {
             _muniDbContext.Remove(Operator);
             _muniDbContext.SaveChanges();
+        }
+        public Operator? GetUserByDNIAndPassword(int DNI, string Password)
+        {
+            return _muniDbContext.Operators.FirstOrDefault(p => p.DNI == DNI && p.Password == Password);
         }
     }
 }

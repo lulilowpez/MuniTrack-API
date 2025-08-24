@@ -54,6 +54,32 @@ namespace Infrastructure.Migrations
                     b.HasKey("DNI");
 
                     b.ToTable("Operators");
+
+                    b.HasData(
+                        new
+                        {
+                            DNI = 46502865,
+                            Deleted = 0,
+                            Email = "micaela@example.com",
+                            LastName = "Ortigoza",
+                            NLegajo = 459850,
+                            Name = "Micaela",
+                            Password = "123abc",
+                            Phone = "3416897542",
+                            Position = 3
+                        },
+                        new
+                        {
+                            DNI = 43567210,
+                            Deleted = 0,
+                            Email = "lucas@example.com",
+                            LastName = "Fernandez",
+                            NLegajo = 459851,
+                            Name = "Lucas",
+                            Password = "abc12345",
+                            Phone = "3416549871",
+                            Position = 2
+                        });
                 });
 #pragma warning restore 612, 618
         }

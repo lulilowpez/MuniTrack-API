@@ -74,8 +74,12 @@ namespace Application.Services
             operatorEntity.Position = Dto.Position;
 
             _operatorRepository.UpdateOperator(operatorEntity);
-            return operatorEntity;
-               
+            return operatorEntity;               
+        }
+        public Operator? ValidateUser(AuthenticationDTO authDTO)
+        {
+            // Usa el método heredado del repositorio para validar el usuario.
+            return _operatorRepository.GetUserByDNIAndPassword(authDTO.DNI, authDTO.Password);
         }
     }
 }

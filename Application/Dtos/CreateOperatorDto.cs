@@ -29,6 +29,6 @@ namespace Application.Dtos
         public string Email { get; set; }
         [Required]
         [JsonConverter(typeof(JsonStringEnumConverter))]
-        public operatorType Position { get; set; }
+        public Role Position { get; set; }
     }
 }

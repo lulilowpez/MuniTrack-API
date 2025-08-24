@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Infrastructure.Migrations
 {
     [DbContext(typeof(MuniDbContext))]
-    [Migration("20250821231342_new-migration")]
-    partial class newmigration
+    [Migration("20250824001425_InitMigration")]
+    partial class InitMigration
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -23,6 +23,9 @@ namespace Infrastructure.Migrations
                 {
                     b.Property<int>("DNI")
                         .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("Deleted")
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("Email")

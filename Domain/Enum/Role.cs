@@ -6,9 +6,11 @@ using System.Threading.Tasks;
 
 namespace Domain.Enum
 {
-    public enum operatorType
+    public enum Role
     {
-        operatorBasic,
-        operatorElite
+        SysAdmin,
+        Admin,
+        OperatorBasic,
+        OperatorElite
     }
 }

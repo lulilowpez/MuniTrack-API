@@ -14,5 +14,6 @@ namespace Domain.Interfaces
         Operator? GetOperatorByDni(int dni);
         Operator UpdateOperator(Operator Operator);
         void DeleteOperator(Operator Operator);
+        Operator? GetUserByDNIAndPassword(int DNI, string Password);
     }
 }

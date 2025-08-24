@@ -15,6 +15,7 @@ namespace Application.Interfaces
         bool DeleteOperator(int dni);
         Operator? GetOperatorByDni(int dni);
         Operator UpdateOperator(int dni, UpdateOperatorDto Dto);
+        Operator? ValidateUser(AuthenticationDTO authDTO);
 
     }
 }
