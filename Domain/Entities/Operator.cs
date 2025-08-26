@@ -13,13 +13,14 @@ namespace Domain.Entities
     public class Operator
     {
         [Key]
+        [Required]
+        public int NLegajo { get; set; }
         public int DNI { get; set; }
         [Required]
         public string Name { get; set; }
         [Required]
         public string LastName { get; set; }
-        [Required]
-        public int NLegajo { get; set; }
+     
         [Required]
         [MinLength(8)]
         public string Password { get; set; }

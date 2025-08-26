@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Net.Mail;
 using System.Text;
@@ -8,16 +10,18 @@ using Domain.Enum;
 
 namespace Domain.Entities
 {
-    public class Operator
+    public class Citizen
     {
+        [Key]
         public int DNI { get; set; }
+        [Required]
         public string Name { get; set; }
+        [Required]
         public string LastName { get; set; }
-        public int NLegajo { get; set; }
-        public string Password { get; set; }
+        [Required]
+        public string Adress { get; set; }
         public string Phone { get; set; }
         public MailAddress Email { get; set; }
-        public operatorType Position { get; set; }
 
     }
 }
