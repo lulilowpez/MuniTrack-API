@@ -21,7 +21,9 @@ namespace Domain.Entities
         [Required]
         public string Adress { get; set; }
         public string Phone { get; set; }
-        public MailAddress Email { get; set; }
+
+        [EmailAddress(ErrorMessage = "El email no es válido")]
+        public string Email { get; set; }
+    }
 
     }
-}

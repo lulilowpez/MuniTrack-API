@@ -13,6 +13,8 @@ namespace Infrastructure
     public class MuniDbContext : DbContext
     {
         public DbSet<Operator> Operators { get; set; }
+        public DbSet<Citizen> Citizens { get; set; }
+        public DbSet<Incidence> Incidences { get; set; }
         public MuniDbContext()
         {
         }

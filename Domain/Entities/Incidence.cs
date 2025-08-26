@@ -18,12 +18,8 @@ namespace Domain.Entities
         public DateTime Date { get; set; } = DateTime.UtcNow;       
         public IncidenceType IncidenceType { get; set; } 
         public string Description { get; set; }
-        public string Name { get; set; }
-        public string LastName { get; set; }
-        public string Phone { get; set; }
-        public MailAddress Email { get; set; }
         public IncidenceState State { get; set; } = IncidenceState.Started;
-        public string Operator { get; set; };
+        public string Operator { get; set; }
         public Department Department { get; set; }
 
 
