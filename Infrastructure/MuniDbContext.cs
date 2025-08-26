@@ -54,6 +54,18 @@ namespace Infrastructure
             }
             );
 
+            modelBuilder.Entity<Operator>()
+              .HasMany(c => c.Citizens)
+              .WithMany();
+
+            modelBuilder.Entity<Citizen>()
+              .HasMany(c => c.Incidences)
+              .WithMany();
+
+            modelBuilder.Entity<Operator>()
+              .HasMany(c => c.Incidences)
+              .WithMany();
+
 
 
             base.OnModelCreating(modelBuilder);

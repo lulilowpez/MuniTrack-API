@@ -20,6 +20,7 @@ namespace Domain.Entities
         public string Description { get; set; }
         public IncidenceState State { get; set; } = IncidenceState.Started;
         public Department Department { get; set; }
+        
 
     }
 }

@@ -32,6 +32,8 @@ namespace Domain.Entities
         [JsonConverter(typeof(JsonStringEnumConverter))]
         public Role Position { get; set; }
         public int Deleted { get; set; } = 0;
+        public List<Citizen> Citizens { get; set; } = new List<Citizen>();
+        public List<Incidence> Incidences { get; set; } = new List<Incidence>();
 
     }
 }
