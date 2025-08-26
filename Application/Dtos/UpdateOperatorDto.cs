@@ -2,18 +2,15 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
-using System.Net.Mail;
 using System.Text;
 using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 using Domain.Enum;
 
-namespace Domain.Entities
+namespace Application.Dtos
 {
-    public class Operator
+    public class UpdateOperatorDto
     {
-        [Key]
-        public int DNI { get; set; }
         [Required]
         public string Name { get; set; }
         [Required]
@@ -30,7 +27,5 @@ namespace Domain.Entities
         [Required]
         [JsonConverter(typeof(JsonStringEnumConverter))]
         public Role Position { get; set; }
-        public int Deleted { get; set; } = 0;
-
     }
 }

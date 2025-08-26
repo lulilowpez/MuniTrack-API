@@ -17,11 +17,25 @@ builder.Services.AddSwaggerGen();
 
 
 builder.Services.AddDbContext<MuniDbContext>(dbContextOptions => dbContextOptions.UseSqlite(
-    builder.Configuration["ConnectionStrings:MuniAPIDBConnectionString"]));
-
-
-builder.Services.AddSingleton<IOperatorRepository, OperatorRepository>();
-builder.Services.AddSingleton<IOperatorService, OperatorService>();
+builder.Configuration["ConnectionStrings:MuniAPIDBConnectionString"]));
+builder.Services.AddAuthentication("Bearer") //"Bearer" es el tipo de auntenticación que tenemos que elegir después en PostMan para pasarle el token
+   .AddJwtBearer(options => //Acá definimos la configuración de la autenticación. le decimos qué cosas queremos comprobar. La fecha de expiración se valida por defecto.
+   {
+       options.TokenValidationParameters = new()
+       {
+           ValidateIssuer = true,
+           ValidateAudience = true,
+           ValidateIssuerSigningKey = true,
+           ValidIssuer = builder.Configuration["Authentication:Issuer"],
+           ValidAudience = builder.Configuration["Authentication:Audience"],
+           IssuerSigningKey = new Microsoft.IdentityModel.Tokens.SymmetricSecurityKey(System.Text.Encoding.ASCII.GetBytes(builder.Configuration["Authentication:SecretForKey"]))
+       };
+   }
+);
+#region
+builder.Services.AddScoped<IOperatorRepository, OperatorRepository>();
+builder.Services.AddScoped<IOperatorService, OperatorService>();
+#endregion
 
 var app = builder.Build();
 
@@ -33,6 +47,7 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+app.UseAuthentication();
 
 app.UseAuthorization();
 
