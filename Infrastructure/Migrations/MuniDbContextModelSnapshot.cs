@@ -67,10 +67,6 @@ namespace Infrastructure.Migrations
                     b.Property<int>("IncidenceType")
                         .HasColumnType("INTEGER");
 
-                    b.Property<string>("Operator")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
                     b.Property<int>("State")
                         .HasColumnType("INTEGER");
 

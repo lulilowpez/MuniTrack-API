@@ -40,7 +40,6 @@ namespace Infrastructure.Migrations
                     IncidenceType = table.Column<int>(type: "INTEGER", nullable: false),
                     Description = table.Column<string>(type: "TEXT", nullable: false),
                     State = table.Column<int>(type: "INTEGER", nullable: false),
-                    Operator = table.Column<string>(type: "TEXT", nullable: false),
                     Department = table.Column<int>(type: "INTEGER", nullable: false)
                 },
                 constraints: table =>

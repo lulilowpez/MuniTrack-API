@@ -19,10 +19,7 @@ namespace Domain.Entities
         public IncidenceType IncidenceType { get; set; } 
         public string Description { get; set; }
         public IncidenceState State { get; set; } = IncidenceState.Started;
-        public string Operator { get; set; }
         public Department Department { get; set; }
-
-
 
     }
 }

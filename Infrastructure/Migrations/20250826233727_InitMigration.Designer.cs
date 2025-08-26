@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Infrastructure.Migrations
 {
     [DbContext(typeof(MuniDbContext))]
-    [Migration("20250826231358_InitMigration")]
+    [Migration("20250826233727_InitMigration")]
     partial class InitMigration
     {
         /// <inheritdoc />
@@ -69,10 +69,6 @@ namespace Infrastructure.Migrations
 
                     b.Property<int>("IncidenceType")
                         .HasColumnType("INTEGER");
-
-                    b.Property<string>("Operator")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
 
                     b.Property<int>("State")
                         .HasColumnType("INTEGER");
