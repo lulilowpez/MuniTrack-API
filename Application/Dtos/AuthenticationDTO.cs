@@ -11,8 +11,7 @@ namespace Application.Dtos
     public class AuthenticationDTO
     {
         [Required]
-        [JsonPropertyName("dni")]
-        public int DNI { get; set; }
+        public int NLegajo { get; set; }
         [Required]
         public string? Password { get; set; }
     }

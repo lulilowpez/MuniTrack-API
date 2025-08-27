@@ -76,10 +76,10 @@ namespace Application.Services
             _operatorRepository.UpdateOperator(operatorEntity);
             return operatorEntity;               
         }
-        public Operator? ValidateUser(AuthenticationDTO authDTO)
+        public Operator? ValidateOper(AuthenticationDTO authDTO)
         {
             // Usa el método heredado del repositorio para validar el usuario.
-            return _operatorRepository.GetUserByDNIAndPassword(authDTO.DNI, authDTO.Password);
+            return _operatorRepository.GetUserByNLegajoAndPassword(authDTO.NLegajo, authDTO.Password);
         }
     }
 }

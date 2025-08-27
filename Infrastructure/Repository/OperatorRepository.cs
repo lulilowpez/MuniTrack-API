@@ -45,9 +45,9 @@ namespace Infrastructure.Repository
             _muniDbContext.Remove(Operator);
             _muniDbContext.SaveChanges();
         }
-        public Operator? GetUserByDNIAndPassword(int DNI, string Password)
+        public Operator? GetUserByNLegajoAndPassword(int NLegajo, string Password)
         {
-            return _muniDbContext.Operators.FirstOrDefault(p => p.DNI == DNI && p.Password == Password);
+            return _muniDbContext.Operators.FirstOrDefault(p => p.NLegajo == NLegajo && p.Password == Password);
         }
     }
 }
