@@ -22,7 +22,7 @@ namespace Infrastructure.Repository
             _muniDbContext.SaveChanges();
         }
 
-        public List<Citizen> GetCitizens()
+        public List<Citizen> GetAllCitizens()
         {
             return _muniDbContext.Citizens.ToList();
         }
@@ -42,10 +42,6 @@ namespace Infrastructure.Repository
         {
             _muniDbContext.Remove(citizen);
             _muniDbContext.SaveChanges();
-        }
-        public Operator? GetUserByNLegajoAndPassword(int NLegajo, string Password)
-        {
-            return _muniDbContext.Operators.FirstOrDefault(p => p.NLegajo == NLegajo && p.Password == Password);
         }
     }
 

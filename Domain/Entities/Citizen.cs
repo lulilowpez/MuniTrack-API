@@ -24,6 +24,7 @@ namespace Domain.Entities
 
         [EmailAddress(ErrorMessage = "El email no es válido")]
         public string Email { get; set; }
+        public int Deleted { get; set; } = 0;
         public List<Incidence> Incidences { get; set; } = new List<Incidence>();
         
     }

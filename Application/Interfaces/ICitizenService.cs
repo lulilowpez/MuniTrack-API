@@ -18,7 +18,6 @@ namespace Application.Interfaces
 
         Operator? GetCitizenByDni(int dni);
 
-        Citizen UpdateCitizen(int dni, UpdateCitizenDto Dto);
 
     }
 }

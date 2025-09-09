@@ -16,6 +16,7 @@ namespace Infrastructure
         public DbSet<Operator> Operators { get; set; }
         public DbSet<Citizen> Citizens { get; set; }
         public DbSet<Incidence> Incidences { get; set; }
+        public DbSet<Area> Areas { get; set; }
         public MuniDbContext()
         {
         }
@@ -55,23 +56,23 @@ namespace Infrastructure
             }
             );
             modelBuilder.Entity<Area>().HasData(
-        new Area
-        {
-            Id = 1,
-            Name = "Oficina Martin Fierro",
-            Description = "Atiende trámites generales",
-            Deleted = 0
-        },
-        new Area
-        {
-            Id = 2,
-            Name = "Oficina Gender",
-            Description = "Atiende temas de género",
-            Deleted = 0
-        }
-    );
+                new Area
+                {
+                    Id = 1,
+                    Name = "Oficina Martin Fierro",
+                    Description = "Atiende trámites generales",
+                    Deleted = 0
+                },
+                new Area
+                {
+                    Id = 2,
+                    Name = "Oficina Gender",
+                    Description = "Atiende temas de género",
+                    Deleted = 0
+                }
+            );
 
-            // Semilla de Incidencias
+            
             modelBuilder.Entity<Incidence>().HasData(
                 new Incidence
                 {
@@ -94,6 +95,27 @@ namespace Infrastructure
                     AreaId = 2
                 }
             );
+            modelBuilder.Entity<Citizen>().HasData(
+            new Citizen
+            {
+                DNI = 46502865,
+                Name = "Micaela",
+                LastName = "Ortigoza",
+                Adress = "Calle Falsa 123",
+                Phone = "3416897542",
+                Email = "micaela@example.com"
+            },
+            new Citizen
+            {
+                DNI = 43567210,
+                Name = "Lucas",
+                LastName = "Fernandez",
+                Adress = "Av. San Martín 456",
+                Phone = "3416549871",
+                Email = "lucas@example.com"
+            }
+            );
+
 
             modelBuilder.Entity<Operator>()
               .HasMany(c => c.Citizens)
