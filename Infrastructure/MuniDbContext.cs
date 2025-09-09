@@ -54,6 +54,29 @@ namespace Infrastructure
             }
             );
 
+            modelBuilder.Entity<Incidence>().HasData(
+            new Incidence
+            {
+                Id = 1,
+                Date = DateTime.UtcNow,
+                IncidenceType = IncidenceType.FoodBag,
+                Description = "Luz rota en Av. Pellegrini 2000",
+                State = IncidenceState.Started,
+                Department = Department.MartinFierroDeparment,
+                Deleted = 0
+            },
+            new Incidence
+            {
+                Id = 2,
+                Date = DateTime.UtcNow.AddDays(-2),
+                IncidenceType = IncidenceType.Complaint,
+                Description = "Bache en San Martín y Rioja",
+                State = IncidenceState.InProgress,
+                Department = Department.GenderArea,
+                Deleted = 0
+            }
+);
+
             modelBuilder.Entity<Operator>()
               .HasMany(c => c.Citizens)
               .WithMany();

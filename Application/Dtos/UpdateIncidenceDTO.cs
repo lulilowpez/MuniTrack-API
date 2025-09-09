@@ -11,9 +11,9 @@ using Domain.Enum;
 
 namespace Application.Dtos
 {
-    public class UpdateOperatorDTO
+    public class UpdateIncidenceDTO
     {
-        public string Description { get; set; }
+        public string? Description { get; set; }
         public IncidenceState State { get; set; } = IncidenceState.Started;
         
 
