@@ -7,6 +7,7 @@ using System.Net.Mail;
 using System.Text;
 using System.Text.Json.Serialization;
 using System.Threading.Tasks;
+using Domain.Entities;
 using Domain.Enum;
 
 namespace Application.Dtos
@@ -18,7 +19,8 @@ namespace Application.Dtos
         public string Description { get; set; }
         public IncidenceState State { get; set; } = IncidenceState.Started;
         public string Operator { get; set; }
-        public Department Department { get; set; }
+        [Required]
+        public Area Area { get; set; }
 
     }
 }

@@ -11,8 +11,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Infrastructure.Migrations
 {
     [DbContext(typeof(MuniDbContext))]
-    [Migration("20250909163041_IncidenceData")]
-    partial class IncidenceData
+    [Migration("20250909173335_InitMigration")]
+    partial class InitMigration
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -48,6 +48,43 @@ namespace Infrastructure.Migrations
                     b.HasIndex("OperatorNLegajo");
 
                     b.ToTable("CitizenOperator");
+                });
+
+            modelBuilder.Entity("Domain.Entities.Area", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("Deleted")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("Description")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Area");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Deleted = 0,
+                            Description = "Atiende trámites generales",
+                            Name = "Oficina Martin Fierro"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Deleted = 0,
+                            Description = "Atiende temas de género",
+                            Name = "Oficina Gender"
+                        });
                 });
 
             modelBuilder.Entity("Domain.Entities.Citizen", b =>
@@ -87,13 +124,13 @@ namespace Infrastructure.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
+                    b.Property<int>("AreaId")
+                        .HasColumnType("INTEGER");
+
                     b.Property<DateTime>("Date")
                         .HasColumnType("TEXT");
 
                     b.Property<int>("Deleted")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<int>("Department")
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("Description")
@@ -108,15 +145,18 @@ namespace Infrastructure.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("AreaId")
+                        .IsUnique();
+
                     b.ToTable("Incidences");
 
                     b.HasData(
                         new
                         {
                             Id = 1,
-                            Date = new DateTime(2025, 9, 9, 16, 30, 40, 887, DateTimeKind.Utc).AddTicks(885),
+                            AreaId = 1,
+                            Date = new DateTime(2025, 9, 9, 17, 33, 35, 287, DateTimeKind.Utc).AddTicks(9418),
                             Deleted = 0,
-                            Department = 4,
                             Description = "Luz rota en Av. Pellegrini 2000",
                             IncidenceType = 1,
                             State = 0
@@ -124,9 +164,9 @@ namespace Infrastructure.Migrations
                         new
                         {
                             Id = 2,
-                            Date = new DateTime(2025, 9, 7, 16, 30, 40, 887, DateTimeKind.Utc).AddTicks(887),
+                            AreaId = 2,
+                            Date = new DateTime(2025, 9, 7, 17, 33, 35, 287, DateTimeKind.Utc).AddTicks(9420),
                             Deleted = 0,
-                            Department = 1,
                             Description = "Bache en San Martín y Rioja",
                             IncidenceType = 2,
                             State = 1
@@ -242,6 +282,17 @@ namespace Infrastructure.Migrations
                         .HasForeignKey("OperatorNLegajo")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("Domain.Entities.Incidence", b =>
+                {
+                    b.HasOne("Domain.Entities.Area", "Area")
+                        .WithOne()
+                        .HasForeignKey("Domain.Entities.Incidence", "AreaId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Area");
                 });
 
             modelBuilder.Entity("IncidenceOperator", b =>

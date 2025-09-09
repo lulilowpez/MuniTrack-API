@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection.Emit;
+using System.Reflection.Metadata;
 using System.Text;
 using System.Threading.Tasks;
 using Domain.Entities;
@@ -53,29 +54,46 @@ namespace Infrastructure
                 Deleted = 0
             }
             );
+            modelBuilder.Entity<Area>().HasData(
+        new Area
+        {
+            Id = 1,
+            Name = "Oficina Martin Fierro",
+            Description = "Atiende trámites generales",
+            Deleted = 0
+        },
+        new Area
+        {
+            Id = 2,
+            Name = "Oficina Gender",
+            Description = "Atiende temas de género",
+            Deleted = 0
+        }
+    );
 
+            // Semilla de Incidencias
             modelBuilder.Entity<Incidence>().HasData(
-            new Incidence
-            {
-                Id = 1,
-                Date = DateTime.UtcNow,
-                IncidenceType = IncidenceType.FoodBag,
-                Description = "Luz rota en Av. Pellegrini 2000",
-                State = IncidenceState.Started,
-                Department = Department.MartinFierroDeparment,
-                Deleted = 0
-            },
-            new Incidence
-            {
-                Id = 2,
-                Date = DateTime.UtcNow.AddDays(-2),
-                IncidenceType = IncidenceType.Complaint,
-                Description = "Bache en San Martín y Rioja",
-                State = IncidenceState.InProgress,
-                Department = Department.GenderArea,
-                Deleted = 0
-            }
-);
+                new Incidence
+                {
+                    Id = 1,
+                    Date = DateTime.UtcNow,
+                    IncidenceType = IncidenceType.FoodBag,
+                    Description = "Luz rota en Av. Pellegrini 2000",
+                    State = IncidenceState.Started,
+                    Deleted = 0,
+                    AreaId = 1 
+                },
+                new Incidence
+                {
+                    Id = 2,
+                    Date = DateTime.UtcNow.AddDays(-2),
+                    IncidenceType = IncidenceType.Complaint,
+                    Description = "Bache en San Martín y Rioja",
+                    State = IncidenceState.InProgress,
+                    Deleted = 0,
+                    AreaId = 2
+                }
+            );
 
             modelBuilder.Entity<Operator>()
               .HasMany(c => c.Citizens)
@@ -88,6 +106,11 @@ namespace Infrastructure
             modelBuilder.Entity<Operator>()
               .HasMany(c => c.Incidences)
               .WithMany();
+
+            modelBuilder.Entity<Incidence>()
+                .HasOne(e => e.Area)
+                .WithOne();
+        
 
 
 

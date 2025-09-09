@@ -19,9 +19,9 @@ namespace Domain.Entities
         public IncidenceType IncidenceType { get; set; } 
         public string Description { get; set; }
         public IncidenceState State { get; set; } = IncidenceState.Started;
-        public Department Department { get; set; }
+        public int AreaId { get; set; }
+        public Area Area { get; set; }
         public int Deleted { get; set; } = 0;
-
 
     }
 }
