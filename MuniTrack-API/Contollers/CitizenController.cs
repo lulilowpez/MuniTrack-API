@@ -2,8 +2,8 @@
 using Application.Dtos;
 using Application.Interfaces;
 using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
 using Application.Services;
+using Microsoft.AspNetCore.Authorization;
 
 
 namespace MuniTrack_API.Contollers
@@ -11,6 +11,7 @@ namespace MuniTrack_API.Contollers
 
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize]
     public class CitizenController : Controller
     {
 

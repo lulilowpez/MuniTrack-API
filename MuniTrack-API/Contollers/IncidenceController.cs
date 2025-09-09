@@ -1,6 +1,7 @@
 ﻿using Application.Dtos;
 using Application.Interfaces;
 using Application.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -8,6 +9,7 @@ namespace MuniTrack_API.Contollers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize]
     public class IncidenceController : ControllerBase
     {
         private readonly IIncidenceService _incidenceService;

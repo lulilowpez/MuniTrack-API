@@ -1,5 +1,6 @@
 ﻿using Application.Dtos;
 using Application.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -7,6 +8,7 @@ namespace MuniTrack_API.Contollers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize]
     public class OperatorController : ControllerBase
     {
         private readonly IOperatorService _operatorService;

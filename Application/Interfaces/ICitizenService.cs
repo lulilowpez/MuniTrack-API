@@ -16,7 +16,7 @@ namespace Application.Interfaces
 
         bool DeleteCitizen(int dni);
 
-        Operator? GetCitizenByDni(int dni);
+        Citizen? GetCitizenByDni(int dni);
 
 
     }

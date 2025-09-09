@@ -1,4 +1,5 @@
 ﻿using Application.Dtos;
+using Application.Interfaces;
 using Domain.Entities;
 using Domain.Interfaces;
 using System;
@@ -9,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace Application.Services
 {
-    public class CitizenService
+    public class CitizenService : ICitizenService
     {
         private readonly ICitizenRepository _citizenRepository;
 
