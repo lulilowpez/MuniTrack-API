@@ -27,7 +27,7 @@ namespace Application.Services
                 IncidenceType = Dto.IncidenceType,
                 Description = Dto.Description,
                 State = Dto.State,
-               Department = Dto.Department
+                Area = Dto.Area
             };
             _incidenceRepository.AddIncidence(newIncidence);
         }
