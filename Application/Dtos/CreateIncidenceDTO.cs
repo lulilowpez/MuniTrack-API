@@ -13,9 +13,6 @@ namespace Application.Dtos
 {
     public class CreateIncidenceDTO
     {
-        [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int Id { get; set; }
         public DateTime Date { get; set; } = DateTime.UtcNow;
         public IncidenceType IncidenceType { get; set; }
         public string Description { get; set; }

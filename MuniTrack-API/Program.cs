@@ -56,6 +56,8 @@ builder.Services.AddAuthentication("Bearer") //"Bearer" es el tipo de auntentica
 #region
 builder.Services.AddScoped<IOperatorRepository, OperatorRepository>();
 builder.Services.AddScoped<IOperatorService, OperatorService>();
+builder.Services.AddScoped<IIncidenceService, IncidenceService>();
+builder.Services.AddScoped<IIncidenceRepository, IncidenceRepository>();
 #endregion
 
 var app = builder.Build();
