@@ -10,10 +10,8 @@ namespace Infrastructure.Repository
 {
     public class CitizenRepository : BaseRepository<Citizen>, ICitizenRepository
     {
-
         public CitizenRepository(MuniDbContext _context) : base(_context)
         {
-
         }
 
         public void AddCitizen(Citizen citizen)
@@ -34,21 +32,19 @@ namespace Infrastructure.Repository
 
         public Citizen UpdateCitizen(Citizen citizen)
         {
-            _muniDbContext.Update(citizen);
+            _muniDbContext.Citizens.Update(citizen);
             _muniDbContext.SaveChanges();
             return citizen;
         }
+
         public void DeleteCitizen(Citizen citizen)
         {
-            _muniDbContext.Remove(citizen);
+            _muniDbContext.Citizens.Remove(citizen);
             _muniDbContext.SaveChanges();
         }
-        public Operator? GetUserByNLegajoAndPassword(int NLegajo, string Password)
-        {
-            return _muniDbContext.Operators.FirstOrDefault(p => p.NLegajo == NLegajo && p.Password == Password);
-        }
     }
-
-
-
 }
+
+
+
+

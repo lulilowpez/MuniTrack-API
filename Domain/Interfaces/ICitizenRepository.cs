@@ -11,9 +11,9 @@ namespace Domain.Interfaces
     {
         void AddCitizen(Citizen citizen);
         List<Citizen> GetCitizens();
-        Citizen? GetCitizenByDni(int NLegajo);
+        Citizen? GetCitizenByDni(int dni);
         Citizen UpdateCitizen(Citizen citizen);
         void DeleteCitizen(Citizen citizen);
-        
+
     }
 }

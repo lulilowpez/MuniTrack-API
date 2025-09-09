@@ -13,11 +13,8 @@ namespace Application.Interfaces
 
         List<Citizen> GetCitizen();
         void CreateCitizen(CreateCitizenDto Dto);
-
         bool DeleteCitizen(int dni);
-
-        Operator? GetCitizenByDni(int dni);
-
+        Citizen? GetCitizenByDni(int dni);
         Citizen UpdateCitizen(int dni, UpdateCitizenDto Dto);
 
     }

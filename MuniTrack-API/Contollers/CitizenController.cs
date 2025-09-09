@@ -21,7 +21,7 @@ namespace MuniTrack_API.Contollers
             _citizenService = citizenService;
         }
 
-        [HttpPost]
+        [HttpPost] //post
         public IActionResult CreateCitizen([FromBody] CreateCitizenDto Dto)
         {
             try
