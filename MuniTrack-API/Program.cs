@@ -54,14 +54,15 @@ builder.Services.AddAuthentication("Bearer") //"Bearer" es el tipo de auntentica
    }
 );
 #region
-builder.Services.AddScoped<ICitizenRepository, CitizenRepository>();
-builder.Services.AddScoped<IOperatorService, OperatorService>();
 
+builder.Services.AddScoped<IOperatorService, OperatorService>();
 builder.Services.AddScoped<IOperatorRepository, OperatorRepository>();
 builder.Services.AddScoped<ICitizenRepository, CitizenRepository>();
-
+builder.Services.AddScoped<ICitizenRepository, CitizenRepository>();
 builder.Services.AddScoped<IIncidenceService, IncidenceService>();
 builder.Services.AddScoped<IIncidenceRepository, IncidenceRepository>();
+builder.Services.AddScoped<IAreaService, AreaService>();
+builder.Services.AddScoped<IAreaRepository, AreaRepository>();
 
 #endregion
 
