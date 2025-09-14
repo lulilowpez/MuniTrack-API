@@ -36,7 +36,7 @@ namespace MuniTrack_API.Contollers
         }
 
         [HttpGet]
-        public IActionResult GetAllOperator()
+        public IActionResult GetAllCitizens()
         {
             var citizen = _citizenService.GetCitizen();
             return Ok(citizen);
@@ -44,11 +44,11 @@ namespace MuniTrack_API.Contollers
         [HttpGet("{dni}")]
         public IActionResult GetCitizenByDni(int dni)
         {
-            var searchOperator = _citizenService.GetCitizenByDni(dni);
-            if (searchOperator == null)
-                return NotFound($"No se encontró el operador con DNI {dni}");
+            var searchCitizen = _citizenService.GetCitizenByDni(dni);
+            if (searchCitizen== null)
+                return NotFound($"No se encontró el ciudadano con DNI {dni}");
 
-            return Ok(searchOperator);
+            return Ok(searchCitizen);
         }
 
         [HttpDelete]

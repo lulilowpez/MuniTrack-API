@@ -1,7 +1,7 @@
 ﻿using Application.Dtos;
-using Application.Interfaces;
 using Domain.Entities;
 using Domain.Interfaces;
+using Application.Interfaces;
 using System;
 using System.Collections.Generic;
 
@@ -15,7 +15,6 @@ namespace Application.Services
         {
             _citizenRepository = citizenRepository;
         }
-
         public List<Citizen> GetCitizen()
         {
             return _citizenRepository.GetCitizens();
